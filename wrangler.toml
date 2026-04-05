@@ -1,3 +1,0 @@
-[[routes]]
-pattern = "nsi.rocks/api/*"
-zone_name = "nsi.rocks"

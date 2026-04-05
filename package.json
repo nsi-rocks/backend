@@ -10,8 +10,18 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@cloudflare/workers-types": "^4.20260404.1",
+    "@nuxt/eslint": "^1.15.2",
+    "@paralleldrive/cuid2": "^3.3.0",
+    "drizzle-kit": "^0.31.10",
+    "drizzle-orm": "^0.45.2",
+    "eslint": "^10.2.0",
+    "nitro-cloudflare-dev": "^0.2.2",
     "nuxt": "^4.4.2",
+    "nuxt-auth-utils": "^0.5.29",
+    "nuxt-authorization": "^0.3.5",
     "vue": "^3.5.31",
-    "vue-router": "^5.0.4"
+    "vue-router": "^5.0.4",
+    "wrangler": "^4.80.0"
   }
 }

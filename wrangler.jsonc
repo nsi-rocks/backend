@@ -1,0 +1,9 @@
+{
+    "name": "backend",
+    "routes": [
+        {
+            "pattern": "nsi.rocks/*",
+            "zone_name": "nsi.rocks"
+        }
+    ]
+}
