@@ -5,9 +5,15 @@
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
+    "dev:remote": "CLOUDFLARE_DEV_CONFIG_PATH=./wrangler.remote.jsonc nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "drizzle:gen": "drizzle-kit generate",
+    "drizzle:push": "npx wrangler d1 migrations apply nsi-rocks --remote",
+    "drizzle:push:local": "pnpm exec wrangler d1 migrations apply nsi-rocks --local --persist-to ./.wrangler/state",
+    "d1:backup:remote": "./scripts/d1/backup-remote.sh",
+    "d1:clone:remote-to-local": "./scripts/d1/clone-remote-to-local.sh"
   },
   "dependencies": {
     "@cloudflare/workers-types": "^4.20260404.1",
@@ -20,6 +26,7 @@
     "nuxt": "^4.4.2",
     "nuxt-auth-utils": "^0.5.29",
     "nuxt-authorization": "^0.3.5",
+    "typescript": "^6.0.2",
     "vue": "^3.5.31",
     "vue-router": "^5.0.4",
     "wrangler": "^4.80.0"

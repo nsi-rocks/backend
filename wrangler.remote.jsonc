@@ -1,0 +1,18 @@
+{
+  "name": "backend",
+  "routes": [
+    {
+      "pattern": "nsi.rocks/*",
+      "zone_name": "nsi.rocks"
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nsi-rocks",
+      "database_id": "0ebc0c8b-1ebe-4ae3-a329-0de588ce67a4",
+      "migrations_dir": "./migrations",
+      "remote": true
+    }
+  ]
+}
