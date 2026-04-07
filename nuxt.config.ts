@@ -23,7 +23,7 @@ export default defineNuxtConfig({
     },
   },
   runtimeConfig: {
-    mistral_api_key: ''
+    mistralApiKey: '',
   },
   eslint: {
     config: {
