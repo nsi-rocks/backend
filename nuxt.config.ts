@@ -9,9 +9,8 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/eslint',
     'nitro-cloudflare-dev',
-    // Temporarily disabled - causes Cloudflare Workers global scope issue
-    // 'nuxt-auth-utils',
-    // 'nuxt-authorization',
+    'nuxt-auth-utils',
+    'nuxt-authorization',
   ],
   nitro: {
     preset: 'cloudflare_module',
