@@ -3,6 +3,17 @@ export default defineEventHandler(async (event) => {
     setResponseHeader(event, 'Cache-Control', 'no-cache')
     setResponseHeader(event, 'Transfer-Encoding', 'chunked')
 
+    const didHandleCors = handleCors(event, {
+        origin: '*',
+        preflight: {
+            statusCode: 204,
+        },
+        methods: '*',
+    })
+    if (didHandleCors) {
+        return
+    }
+
     const body = await readBody(event)
     console.log('Body:', body)
     const config = useRuntimeConfig()
