@@ -4,6 +4,6 @@ export default defineEventHandler(async (event) => {
   const result = await db.select().from(t.users).all();
   return {
     users: result,
-    test: config.mistralApiKey
+    // test: config.mistralApiKey
   }
 })
