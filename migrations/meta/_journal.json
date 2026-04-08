@@ -8,6 +8,13 @@
       "when": 1775381908713,
       "tag": "0000_aberrant_gamora",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1775677018250,
+      "tag": "0001_bright_talkback",
+      "breakpoints": true
     }
   ]
 }

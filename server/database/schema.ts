@@ -9,3 +9,14 @@ export const users = sqliteTable('users', {
   password: text('password').notNull(),
   createdAt: integer('created_at', { mode: 'timestamp_ms' }).$default(() => new Date()),
 });
+
+export const submissions = sqliteTable('submissions', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  publicId: text('public_id').notNull().unique().$default(() => createPublicId()),
+  studentName: text('student_name').notNull(),
+  activityId: text('activity_id').notNull(),
+  prompt: text('prompt').notNull(),
+  response: text('response').notNull(),
+  metadata: text('metadata'), // JSON string for mode, systemPrompt, constraints, etc.
+  createdAt: integer('created_at', { mode: 'timestamp_ms' }).$default(() => new Date()),
+});
