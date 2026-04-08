@@ -1,7 +1,7 @@
 import { submissions } from '@@/server/database/schema'
 
 export default defineEventHandler(async (event) => {
-    const db = useDrizzle()
+    const db = useDb(event)
     const body = await readBody(event)
 
     // Validate required fields

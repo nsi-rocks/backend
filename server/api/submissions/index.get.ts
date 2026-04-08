@@ -2,7 +2,7 @@ import { eq, desc, and, like } from 'drizzle-orm'
 import { submissions } from '@@/server/database/schema'
 
 export default defineEventHandler(async (event) => {
-    const db = useDrizzle()
+    const db = useDb(event)
     const query = getQuery(event)
 
     // Build filters
