@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     mistralApiKey: '',
+    adminPassword: '',
   },
   eslint: {
     config: {

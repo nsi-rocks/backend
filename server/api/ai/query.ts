@@ -3,6 +3,9 @@ export default defineEventHandler(async (event) => {
   setResponseHeader(event, 'Cache-Control', 'no-cache')
   setResponseHeader(event, 'Transfer-Encoding', 'chunked')
 
+  const labOpen = await getLabStatus(event)
+  requireLabOpen(labOpen)
+
   const body = await readBody(event)
   const config = useRuntimeConfig()
 
