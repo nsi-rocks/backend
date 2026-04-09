@@ -1,42 +1,36 @@
-import { sql } from 'drizzle-orm'
 import { submissions } from '@@/server/database/schema'
 
 export default defineEventHandler(async (event) => {
-    try {
-        const config = useRuntimeConfig()
-        const body = await readBody(event)
+    console.log('[DELETE /submissions] START')
+    
+    const config = useRuntimeConfig()
+    console.log('[DELETE /submissions] Config loaded')
+    
+    const body = await readBody(event)
+    console.log('[DELETE /submissions] Body read:', { hasPassword: !!body.password })
 
-        if (!body.password) {
-            throw createError({
-                statusCode: 400,
-                message: 'Missing password',
-            })
-        }
-
-        if (!config.adminPassword || body.password !== config.adminPassword) {
-            throw createError({
-                statusCode: 401,
-                message: 'Invalid password',
-            })
-        }
-
-        const db = useDb(event)
-
-        const rows = await db.delete(submissions).returning()
-
-        return rows
-    } catch (error: any) {
-        // Ensure CORS headers are set even on error
-        const allowedOrigins = [
-            'https://ia.nsi.rocks',
-            'http://localhost:3000',
-            'http://localhost:3001',
-        ]
-        const origin = getRequestHeader(event, 'origin')
-        if (origin && allowedOrigins.includes(origin)) {
-            setResponseHeader(event, 'Access-Control-Allow-Origin', origin)
-            setResponseHeader(event, 'Access-Control-Allow-Credentials', 'true')
-        }
-        throw error
+    if (!body.password) {
+        console.log('[DELETE /submissions] ERROR: Missing password')
+        throw createError({
+            statusCode: 400,
+            message: 'Missing password',
+        })
     }
+
+    if (!config.adminPassword || body.password !== config.adminPassword) {
+        console.log('[DELETE /submissions] ERROR: Invalid password')
+        throw createError({
+            statusCode: 401,
+            message: 'Invalid password',
+        })
+    }
+
+    console.log('[DELETE /submissions] Auth OK, getting DB...')
+    const db = useDb(event)
+    console.log('[DELETE /submissions] DB retrieved, executing DELETE...')
+
+    const rows = await db.delete(submissions).returning()
+    console.log('[DELETE /submissions] DELETE completed, rows:', rows.length)
+
+    return rows
 })
