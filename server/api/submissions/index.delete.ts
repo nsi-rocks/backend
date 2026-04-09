@@ -6,10 +6,11 @@ export default defineEventHandler(async (event) => {
     const config = useRuntimeConfig()
     console.log('[DELETE /submissions] Config loaded')
     
-    const body = await readBody(event)
-    console.log('[DELETE /submissions] Body read:', { hasPassword: !!body.password })
+    // Try getting password from header instead of body
+    const password = getRequestHeader(event, 'x-admin-password')
+    console.log('[DELETE /submissions] Password from header:', !!password)
 
-    if (!body.password) {
+    if (!password) {
         console.log('[DELETE /submissions] ERROR: Missing password')
         throw createError({
             statusCode: 400,
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    if (!config.adminPassword || body.password !== config.adminPassword) {
+    if (!config.adminPassword || password !== config.adminPassword) {
         console.log('[DELETE /submissions] ERROR: Invalid password')
         throw createError({
             statusCode: 401,
@@ -34,3 +35,4 @@ export default defineEventHandler(async (event) => {
 
     return rows
 })
+
