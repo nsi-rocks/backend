@@ -22,8 +22,7 @@ export default defineEventHandler(async (event) => {
 
         const db = useDb(event)
 
-        const rows = await db.select().from(submissions)
-        await db.delete(submissions).where(sql`1=1`)
+        const rows = await db.delete(submissions).returning()
 
         return rows
     } catch (error: any) {
