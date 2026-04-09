@@ -1,3 +1,4 @@
+import { sql } from 'drizzle-orm'
 import { submissions } from '@@/server/database/schema'
 
 export default defineEventHandler(async (event) => {
@@ -22,7 +23,7 @@ export default defineEventHandler(async (event) => {
         const db = useDb(event)
 
         const rows = await db.select().from(submissions)
-        await db.delete(submissions)
+        await db.delete(submissions).where(sql`1=1`)
 
         return rows
     } catch (error: any) {
