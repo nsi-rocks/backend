@@ -14,7 +14,7 @@ export default defineEventHandler((event) => {
 
     // Always set these headers
     setResponseHeader(event, 'Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
-    setResponseHeader(event, 'Access-Control-Allow-Headers', 'Content-Type, Authorization')
+    setResponseHeader(event, 'Access-Control-Allow-Headers', 'Content-Type, Authorization, X-Admin-Password')
     setResponseHeader(event, 'Access-Control-Allow-Credentials', 'true')
     setResponseHeader(event, 'Access-Control-Max-Age', 86400) // 24h cache
 
