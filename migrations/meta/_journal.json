@@ -15,6 +15,13 @@
       "when": 1775677018250,
       "tag": "0001_bright_talkback",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1775694553137,
+      "tag": "0002_blue_overlord",
+      "breakpoints": true
     }
   ]
 }
